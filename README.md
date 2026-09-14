@@ -12,7 +12,13 @@ netChimes is a globally-distributed sensor array network actuated by the ambient
 # The wind chime sensor
 The wind chime sensor is a standalone, solar-powered sensor supporting a hanging sail which catches the wind. The sail is attached to the sensor body by 3d printable neck and collar which is attached to a water proof/resitant enclosure. The enclosure houses the following components:
   1. RAKwireless 4631 development board containing the RAk463 module with LoRa and Bluetooth
-  2. The RAKwireless 19003 base which provides USB serial programming, solar charging/powering circuitry, battery connectivity, and basic GPIO to the microcontroller. [See here.](https://www.amazon.com/RAKwireless-WisBlock-Meshtastic-Starter-RAK19003/dp/B0DFMMTQZM/ref=sr_1_2?crid=31QK5KZ9U5E8A&dib=eyJ2IjoiMSJ9.vAQkfnF6Tfq_hOLJDW4BbYI0Te-jCuKKoGat-sFLnPBv-GmmQXdSll5smpB_6gkI_F9hij-ynLdGmS2FMHj2oyclOg4oj1n0oIC4Wx1GxhcfR643q2OzCs1hOpIXumd52nomlLHhqXyh6CQC7HoDkTNonm3SARh4E4of8ti54OJvEKqb3B-BIwEvLXplr-2YhaEe141CTaggsTsRQNomuHwauZZMcDeVc6T_pByAvqw.5ORZzQFi6U8hpOcH2ym5YyyLy1nCqXwO4j7NINcepdA&dib_tag=se&keywords=rak%2Bwireless%2Bwisblock&qid=1789422313&sprefix=rak%2Bwireless%2Bwisblock%2Caps%2C177&sr=8-2&th=1)
+  2. The RAKwireless 19003 base which provides USB serial programming, solar charging/powering circuitry, battery connectivity, and basic GPIO to the microcontroller. 
 
-     Note: The 4631 and 19003 are often sold together as a Meshtastic starter kit packaged with other accessories such as antennas: 
+     Note: The 4631 and 19003 are often sold together as a Meshtastic starter kit packaged with other accessories such as antennas [as seen here.](https://www.amazon.com/RAKwireless-WisBlock-Meshtastic-Starter-RAK19003/dp/B0DFMMTQZM/ref=sr_1_2?crid=31QK5KZ9U5E8A&dib=eyJ2IjoiMSJ9.vAQkfnF6Tfq_hOLJDW4BbYI0Te-jCuKKoGat-sFLnPBv-GmmQXdSll5smpB_6gkI_F9hij-ynLdGmS2FMHj2oyclOg4oj1n0oIC4Wx1GxhcfR643q2OzCs1hOpIXumd52nomlLHhqXyh6CQC7HoDkTNonm3SARh4E4of8ti54OJvEKqb3B-BIwEvLXplr-2YhaEe141CTaggsTsRQNomuHwauZZMcDeVc6T_pByAvqw.5ORZzQFi6U8hpOcH2ym5YyyLy1nCqXwO4j7NINcepdA&dib_tag=se&keywords=rak%2Bwireless%2Bwisblock&qid=1789422313&sprefix=rak%2Bwireless%2Bwisblock%2Caps%2C177&sr=8-2&th=1)
+     
+AS sensor to gateway communication is via LoRa (LOw power RAdio) utilizing the ISM (Industrial, Scientific, and Medical) frequencies. Frequencies vary from region to region (North American, Europe, Asia, etc.) and it is up to the participant to work within the frequencies allowed to them and secure the right modules for their region.
 
+  3. An AHT20 temperature and humidity sensor with I2C, available [here](https://www.adafruit.com/product/4566) and elsewhere.
+  4. A VEML7700 Lux Sensor with I2C, available [here](https://www.adafruit.com/product/4162) and elsewhere.
+  5. A MCP23008 digital I/0 expander, available [here](https://www.adafruit.com/product/593) and elsewhere.
+  6. 6  hall effect sensors (non-latching/omnipolar). There are may variations out there, but they must be non-latching and only activated (pulled to ground) when a magnet passes over them. These [AH1815s](https://www.sparkfun.com/hall-effect-sensor-ah1815-non-latching.html) should do the trick.
