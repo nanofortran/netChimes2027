@@ -22,3 +22,5 @@ AS sensor to gateway communication is via LoRa (LOw power RAdio) utilizing the I
   4. A VEML7700 Lux Sensor with I2C, available [here](https://www.adafruit.com/product/4162) and elsewhere.
   5. A MCP23008 digital I/0 expander, available [here](https://www.adafruit.com/product/593) and elsewhere.
   6. 6  hall effect sensors (non-latching/omnipolar). There are may variations out there, but they must be non-latching and only activated (pulled to ground) when a magnet passes over them. These [AH1815s](https://www.sparkfun.com/hall-effect-sensor-ah1815-non-latching.html) should do the trick.
+  7. A protoboard to connect all the components together. I am open to having someone sketch up a Gerber file so we can print our own, but as we are still in development we might hold off. Something like [this](https://www.adafruit.com/product/1609).
+  8. External LoRa antenna like [this](https://www.digikey.com/en/product-highlight/m/molex/lora-external-antennas). Though a [spring antenna](https://www.adafruit.com/product/4269) housed inside the enclosure may work if the distance to the gateway is  not too far away (actually, I have no idea).
