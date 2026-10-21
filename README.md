@@ -9,6 +9,50 @@ netChimes is a globally-distributed sensor array network actuated by the ambient
 3. The netChimes server(s), and
 4. An installation, application, object, or other project that is directed by real-time data traversing the system.
 
+# Block diagram
+The diagram below shows the components and data flow. Dashed boxes are parts of the system the README does not yet describe in detail.
+
+```mermaid
+flowchart LR
+    subgraph Sensor["1. Wind chime sensor (standalone, in enclosure)"]
+        direction TB
+        SOLAR["Solar panel"]
+        BATT["Battery"]
+        subgraph RAK["RAKwireless WisBlock"]
+            BASE["RAK19003 base<br/>USB serial, solar charging,<br/>power, GPIO"]
+            CORE["RAK4631 core<br/>MCU + LoRa + Bluetooth"]
+        end
+        subgraph I2C["I2C bus"]
+            AHT["AHT20<br/>temperature, humidity"]
+            LUX["VEML7700<br/>lux"]
+            MCP["MCP23008<br/>I/O expander"]
+        end
+        HALL["6 x hall effect sensors<br/>(non-latching, omnipolar)<br/>magnet passes = pulled to ground"]
+        SAIL["Hanging sail + magnet<br/>(wind motion)"]
+        ANT["LoRa antenna"]
+
+        SOLAR --> BASE
+        BATT <--> BASE
+        BASE --- CORE
+        CORE <-- "I2C" --> AHT
+        CORE <-- "I2C" --> LUX
+        CORE <-- "I2C" --> MCP
+        HALL --> MCP
+        SAIL -. "moves past" .-> HALL
+        CORE --> ANT
+    end
+
+    GW["2. Wind chime node / gateway"]:::tbd
+    SRV["3. netChimes server(s)"]:::tbd
+    APP["4. Installation, application,<br/>or object driven by real-time data"]:::tbd
+
+    ANT -- "LoRa (ISM band,<br/>region-specific)" --> GW
+    GW --> SRV
+    SRV -- "real-time data" --> APP
+
+    classDef tbd stroke-dasharray: 5 5;
+```
+
 # The wind chime sensor
 The wind chime sensor is a standalone, solar-powered sensor supporting a hanging sail which catches the wind. The sail is attached to the sensor body by 3d printable neck and collar which is attached to a water proof/resitant enclosure. The enclosure houses the following components:
   1. RAKwireless 4631 development board containing the RAk463 module with LoRa and Bluetooth
